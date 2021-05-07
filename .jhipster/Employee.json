@@ -1,0 +1,56 @@
+{
+  "name": "Employee",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hireDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "salary",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "department",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "region",
+      "ownerSide": true
+    }
+  ],
+  "javadoc": "The Employee entity.",
+  "entityTableName": "employee",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210507084121"
+}
