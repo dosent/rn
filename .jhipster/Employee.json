@@ -24,6 +24,22 @@
     {
       "fieldName": "salary",
       "fieldType": "Long"
+    },
+    {
+      "fieldName": "portalId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "LocalDate"
     }
   ],
   "relationships": [
@@ -40,6 +56,13 @@
       "otherEntityRelationshipName": "employee",
       "relationshipName": "region",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "groups",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "groups",
+      "ownerSide": false
     }
   ],
   "javadoc": "The Employee entity.",

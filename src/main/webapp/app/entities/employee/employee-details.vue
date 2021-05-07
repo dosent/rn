@@ -43,6 +43,30 @@
             <span>{{ employee.salary }}</span>
           </dd>
           <dt>
+            <span v-text="$t('rnApp.employee.portalId')">Portal Id</span>
+          </dt>
+          <dd>
+            <span>{{ employee.portalId }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('rnApp.employee.login')">Login</span>
+          </dt>
+          <dd>
+            <span>{{ employee.login }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('rnApp.employee.active')">Active</span>
+          </dt>
+          <dd>
+            <span>{{ employee.active }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('rnApp.employee.createDate')">Create Date</span>
+          </dt>
+          <dd>
+            <span>{{ employee.createDate }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('rnApp.employee.department')">Department</span>
           </dt>
           <dd>

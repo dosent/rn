@@ -41,6 +41,22 @@
             <font-awesome-icon icon="asterisk" />
             <span v-text="$t('global.menu.entities.employee')">Employee</span>
           </b-dropdown-item>
+          <b-dropdown-item to="/region">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.region')">Region</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/department">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.department')">Department</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/employee">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.employee')">Employee</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/groups">
+            <font-awesome-icon icon="asterisk" />
+            <span v-text="$t('global.menu.entities.groups')">Groups</span>
+          </b-dropdown-item>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown

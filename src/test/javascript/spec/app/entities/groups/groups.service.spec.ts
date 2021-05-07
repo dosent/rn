@@ -1,11 +1,9 @@
 /* tslint:disable max-line-length */
 import axios from 'axios';
 import sinon from 'sinon';
-import dayjs from 'dayjs';
 
-import { DATE_FORMAT, DATE_TIME_FORMAT } from '@/shared/date/filters';
-import EmployeeService from '@/entities/employee/employee.service';
-import { Employee } from '@/shared/model/employee.model';
+import GroupsService from '@/entities/groups/groups.service';
+import { Groups } from '@/shared/model/groups.model';
 
 const error = {
   response: {
@@ -25,26 +23,18 @@ const axiosStub = {
 };
 
 describe('Service Tests', () => {
-  describe('Employee Service', () => {
-    let service: EmployeeService;
+  describe('Groups Service', () => {
+    let service: GroupsService;
     let elemDefault;
-    let currentDate: Date;
 
     beforeEach(() => {
-      service = new EmployeeService();
-      currentDate = new Date();
-      elemDefault = new Employee(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0, 'AAAAAAA', 'AAAAAAA', false, currentDate);
+      service = new GroupsService();
+      elemDefault = new Groups(0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
       it('should find an element', async () => {
-        const returnedFromService = Object.assign(
-          {
-            hireDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            createDate: dayjs(currentDate).format(DATE_FORMAT),
-          },
-          elemDefault
-        );
+        const returnedFromService = Object.assign({}, elemDefault);
         axiosStub.get.resolves({ data: returnedFromService });
 
         return service.find(123).then(res => {
@@ -62,22 +52,14 @@ describe('Service Tests', () => {
           });
       });
 
-      it('should create a Employee', async () => {
+      it('should create a Groups', async () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            hireDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            createDate: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault
         );
-        const expected = Object.assign(
-          {
-            hireDate: currentDate,
-            createDate: currentDate,
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
 
         axiosStub.post.resolves({ data: returnedFromService });
         return service.create({}).then(res => {
@@ -85,7 +67,7 @@ describe('Service Tests', () => {
         });
       });
 
-      it('should not create a Employee', async () => {
+      it('should not create a Groups', async () => {
         axiosStub.post.rejects(error);
 
         return service
@@ -96,30 +78,15 @@ describe('Service Tests', () => {
           });
       });
 
-      it('should update a Employee', async () => {
+      it('should update a Groups', async () => {
         const returnedFromService = Object.assign(
           {
-            firstName: 'BBBBBB',
-            lastName: 'BBBBBB',
-            email: 'BBBBBB',
-            phoneNumber: 'BBBBBB',
-            hireDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            salary: 1,
-            portalId: 'BBBBBB',
-            login: 'BBBBBB',
-            active: true,
-            createDate: dayjs(currentDate).format(DATE_FORMAT),
+            name: 'BBBBBB',
           },
           elemDefault
         );
 
-        const expected = Object.assign(
-          {
-            hireDate: currentDate,
-            createDate: currentDate,
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         axiosStub.put.resolves({ data: returnedFromService });
 
         return service.update(expected).then(res => {
@@ -127,7 +94,7 @@ describe('Service Tests', () => {
         });
       });
 
-      it('should not update a Employee', async () => {
+      it('should not update a Groups', async () => {
         axiosStub.put.rejects(error);
 
         return service
@@ -138,28 +105,16 @@ describe('Service Tests', () => {
           });
       });
 
-      it('should partial update a Employee', async () => {
+      it('should partial update a Groups', async () => {
         const patchObject = Object.assign(
           {
-            firstName: 'BBBBBB',
-            lastName: 'BBBBBB',
-            email: 'BBBBBB',
-            phoneNumber: 'BBBBBB',
-            salary: 1,
-            login: 'BBBBBB',
-            active: true,
+            name: 'BBBBBB',
           },
-          new Employee()
+          new Groups()
         );
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
-        const expected = Object.assign(
-          {
-            hireDate: currentDate,
-            createDate: currentDate,
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         axiosStub.patch.resolves({ data: returnedFromService });
 
         return service.partialUpdate(patchObject).then(res => {
@@ -167,7 +122,7 @@ describe('Service Tests', () => {
         });
       });
 
-      it('should not partial update a Employee', async () => {
+      it('should not partial update a Groups', async () => {
         axiosStub.patch.rejects(error);
 
         return service
@@ -178,36 +133,21 @@ describe('Service Tests', () => {
           });
       });
 
-      it('should return a list of Employee', async () => {
+      it('should return a list of Groups', async () => {
         const returnedFromService = Object.assign(
           {
-            firstName: 'BBBBBB',
-            lastName: 'BBBBBB',
-            email: 'BBBBBB',
-            phoneNumber: 'BBBBBB',
-            hireDate: dayjs(currentDate).format(DATE_TIME_FORMAT),
-            salary: 1,
-            portalId: 'BBBBBB',
-            login: 'BBBBBB',
-            active: true,
-            createDate: dayjs(currentDate).format(DATE_FORMAT),
+            name: 'BBBBBB',
           },
           elemDefault
         );
-        const expected = Object.assign(
-          {
-            hireDate: currentDate,
-            createDate: currentDate,
-          },
-          returnedFromService
-        );
+        const expected = Object.assign({}, returnedFromService);
         axiosStub.get.resolves([returnedFromService]);
-        return service.retrieve({ sort: {}, page: 0, size: 10 }).then(res => {
+        return service.retrieve().then(res => {
           expect(res).toContainEqual(expected);
         });
       });
 
-      it('should not return a list of Employee', async () => {
+      it('should not return a list of Groups', async () => {
         axiosStub.get.rejects(error);
 
         return service
@@ -218,14 +158,14 @@ describe('Service Tests', () => {
           });
       });
 
-      it('should delete a Employee', async () => {
+      it('should delete a Groups', async () => {
         axiosStub.delete.resolves({ ok: true });
         return service.delete(123).then(res => {
           expect(res.ok).toBeTruthy();
         });
       });
 
-      it('should not delete a Employee', async () => {
+      it('should not delete a Groups', async () => {
         axiosStub.delete.rejects(error);
 
         return service

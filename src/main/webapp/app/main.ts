@@ -30,6 +30,7 @@ import UserOAuth2Service from '@/entities/user/user.oauth2.service';
 import RegionService from '@/entities/region/region.service';
 import DepartmentService from '@/entities/department/department.service';
 import EmployeeService from '@/entities/employee/employee.service';
+import GroupsService from '@/entities/groups/groups.service';
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
 
 /* tslint:enable */
@@ -91,6 +92,7 @@ new Vue({
     regionService: () => new RegionService(),
     departmentService: () => new DepartmentService(),
     employeeService: () => new EmployeeService(),
+    groupsService: () => new GroupsService(),
     // jhipster-needle-add-entity-service-to-main - JHipster will import entities services here
     accountService: () => accountService,
   },

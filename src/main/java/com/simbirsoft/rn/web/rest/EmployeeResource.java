@@ -148,6 +148,18 @@ public class EmployeeResource {
                     if (employee.getSalary() != null) {
                         existingEmployee.setSalary(employee.getSalary());
                     }
+                    if (employee.getPortalId() != null) {
+                        existingEmployee.setPortalId(employee.getPortalId());
+                    }
+                    if (employee.getLogin() != null) {
+                        existingEmployee.setLogin(employee.getLogin());
+                    }
+                    if (employee.getActive() != null) {
+                        existingEmployee.setActive(employee.getActive());
+                    }
+                    if (employee.getCreateDate() != null) {
+                        existingEmployee.setCreateDate(employee.getCreateDate());
+                    }
 
                     return existingEmployee;
                 }
