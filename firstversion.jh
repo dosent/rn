@@ -6,6 +6,9 @@ entity Department {
 	departmentName String required
 }
 
+entity Groups {
+	name String    
+}
 /**
  * The Employee entity.
  */
@@ -15,7 +18,11 @@ entity Employee {
 	email String,
 	phoneNumber String,
 	hireDate Instant,
-	salary Long
+	salary Long,
+    portalId String,
+    login String,
+    active Boolean
+    createDate LocalDate   
 }
 
 
@@ -27,9 +34,9 @@ relationship OneToOne {
 	Employee{region} to Region
 }
 
-//relationship ManyToMany {
-//	Job{task(title)} to Task{job}
-//}
+relationship ManyToMany {
+	Groups{Employee} to Employee
+}
 
 
 // Set pagination options
@@ -39,7 +46,7 @@ paginate  Employee with infinite-scroll
 // dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl except Employee, Department
+service all with serviceImpl except Employee, Department, Groups
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
