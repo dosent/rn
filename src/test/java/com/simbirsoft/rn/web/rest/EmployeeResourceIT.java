@@ -9,6 +9,8 @@ import com.simbirsoft.rn.IntegrationTest;
 import com.simbirsoft.rn.domain.Employee;
 import com.simbirsoft.rn.repository.EmployeeRepository;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
@@ -49,6 +51,18 @@ class EmployeeResourceIT {
     private static final Long DEFAULT_SALARY = 1L;
     private static final Long UPDATED_SALARY = 2L;
 
+    private static final String DEFAULT_PORTAL_ID = "AAAAAAAAAA";
+    private static final String UPDATED_PORTAL_ID = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LOGIN = "AAAAAAAAAA";
+    private static final String UPDATED_LOGIN = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_ACTIVE = false;
+    private static final Boolean UPDATED_ACTIVE = true;
+
+    private static final LocalDate DEFAULT_CREATE_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATE_DATE = LocalDate.now(ZoneId.systemDefault());
+
     private static final String ENTITY_API_URL = "/api/employees";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -79,7 +93,11 @@ class EmployeeResourceIT {
             .email(DEFAULT_EMAIL)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .hireDate(DEFAULT_HIRE_DATE)
-            .salary(DEFAULT_SALARY);
+            .salary(DEFAULT_SALARY)
+            .portalId(DEFAULT_PORTAL_ID)
+            .login(DEFAULT_LOGIN)
+            .active(DEFAULT_ACTIVE)
+            .createDate(DEFAULT_CREATE_DATE);
         return employee;
     }
 
@@ -96,7 +114,11 @@ class EmployeeResourceIT {
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .hireDate(UPDATED_HIRE_DATE)
-            .salary(UPDATED_SALARY);
+            .salary(UPDATED_SALARY)
+            .portalId(UPDATED_PORTAL_ID)
+            .login(UPDATED_LOGIN)
+            .active(UPDATED_ACTIVE)
+            .createDate(UPDATED_CREATE_DATE);
         return employee;
     }
 
@@ -124,6 +146,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testEmployee.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
         assertThat(testEmployee.getSalary()).isEqualTo(DEFAULT_SALARY);
+        assertThat(testEmployee.getPortalId()).isEqualTo(DEFAULT_PORTAL_ID);
+        assertThat(testEmployee.getLogin()).isEqualTo(DEFAULT_LOGIN);
+        assertThat(testEmployee.getActive()).isEqualTo(DEFAULT_ACTIVE);
+        assertThat(testEmployee.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
     }
 
     @Test
@@ -161,7 +187,11 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].hireDate").value(hasItem(DEFAULT_HIRE_DATE.toString())))
-            .andExpect(jsonPath("$.[*].salary").value(hasItem(DEFAULT_SALARY.intValue())));
+            .andExpect(jsonPath("$.[*].salary").value(hasItem(DEFAULT_SALARY.intValue())))
+            .andExpect(jsonPath("$.[*].portalId").value(hasItem(DEFAULT_PORTAL_ID)))
+            .andExpect(jsonPath("$.[*].login").value(hasItem(DEFAULT_LOGIN)))
+            .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())))
+            .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())));
     }
 
     @Test
@@ -181,7 +211,11 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
             .andExpect(jsonPath("$.hireDate").value(DEFAULT_HIRE_DATE.toString()))
-            .andExpect(jsonPath("$.salary").value(DEFAULT_SALARY.intValue()));
+            .andExpect(jsonPath("$.salary").value(DEFAULT_SALARY.intValue()))
+            .andExpect(jsonPath("$.portalId").value(DEFAULT_PORTAL_ID))
+            .andExpect(jsonPath("$.login").value(DEFAULT_LOGIN))
+            .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()))
+            .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()));
     }
 
     @Test
@@ -209,7 +243,11 @@ class EmployeeResourceIT {
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .hireDate(UPDATED_HIRE_DATE)
-            .salary(UPDATED_SALARY);
+            .salary(UPDATED_SALARY)
+            .portalId(UPDATED_PORTAL_ID)
+            .login(UPDATED_LOGIN)
+            .active(UPDATED_ACTIVE)
+            .createDate(UPDATED_CREATE_DATE);
 
         restEmployeeMockMvc
             .perform(
@@ -229,6 +267,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testEmployee.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
         assertThat(testEmployee.getSalary()).isEqualTo(UPDATED_SALARY);
+        assertThat(testEmployee.getPortalId()).isEqualTo(UPDATED_PORTAL_ID);
+        assertThat(testEmployee.getLogin()).isEqualTo(UPDATED_LOGIN);
+        assertThat(testEmployee.getActive()).isEqualTo(UPDATED_ACTIVE);
+        assertThat(testEmployee.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
     }
 
     @Test
@@ -304,7 +346,9 @@ class EmployeeResourceIT {
             .lastName(UPDATED_LAST_NAME)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
-            .salary(UPDATED_SALARY);
+            .salary(UPDATED_SALARY)
+            .login(UPDATED_LOGIN)
+            .active(UPDATED_ACTIVE);
 
         restEmployeeMockMvc
             .perform(
@@ -324,6 +368,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testEmployee.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
         assertThat(testEmployee.getSalary()).isEqualTo(UPDATED_SALARY);
+        assertThat(testEmployee.getPortalId()).isEqualTo(DEFAULT_PORTAL_ID);
+        assertThat(testEmployee.getLogin()).isEqualTo(UPDATED_LOGIN);
+        assertThat(testEmployee.getActive()).isEqualTo(UPDATED_ACTIVE);
+        assertThat(testEmployee.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
     }
 
     @Test
@@ -344,7 +392,11 @@ class EmployeeResourceIT {
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
             .hireDate(UPDATED_HIRE_DATE)
-            .salary(UPDATED_SALARY);
+            .salary(UPDATED_SALARY)
+            .portalId(UPDATED_PORTAL_ID)
+            .login(UPDATED_LOGIN)
+            .active(UPDATED_ACTIVE)
+            .createDate(UPDATED_CREATE_DATE);
 
         restEmployeeMockMvc
             .perform(
@@ -364,6 +416,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);
         assertThat(testEmployee.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
         assertThat(testEmployee.getSalary()).isEqualTo(UPDATED_SALARY);
+        assertThat(testEmployee.getPortalId()).isEqualTo(UPDATED_PORTAL_ID);
+        assertThat(testEmployee.getLogin()).isEqualTo(UPDATED_LOGIN);
+        assertThat(testEmployee.getActive()).isEqualTo(UPDATED_ACTIVE);
+        assertThat(testEmployee.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
     }
 
     @Test

@@ -43,7 +43,7 @@
     "clientTheme": "none",
     "clientThemeVariant": "",
     "reactive": false,
-    "entities": ["Region", "Department", "Employee"],
-    "lastLiquibaseTimestamp": 1620376881000
+    "entities": ["Region", "Department", "Employee", "Groups"],
+    "lastLiquibaseTimestamp": 1620381944000
   }
 }

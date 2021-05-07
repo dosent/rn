@@ -90,6 +90,70 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('rnApp.employee.portalId')" for="employee-portalId">Portal Id</label>
+            <input
+              type="text"
+              class="form-control"
+              name="portalId"
+              id="employee-portalId"
+              data-cy="portalId"
+              :class="{ valid: !$v.employee.portalId.$invalid, invalid: $v.employee.portalId.$invalid }"
+              v-model="$v.employee.portalId.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('rnApp.employee.login')" for="employee-login">Login</label>
+            <input
+              type="text"
+              class="form-control"
+              name="login"
+              id="employee-login"
+              data-cy="login"
+              :class="{ valid: !$v.employee.login.$invalid, invalid: $v.employee.login.$invalid }"
+              v-model="$v.employee.login.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('rnApp.employee.active')" for="employee-active">Active</label>
+            <input
+              type="checkbox"
+              class="form-check"
+              name="active"
+              id="employee-active"
+              data-cy="active"
+              :class="{ valid: !$v.employee.active.$invalid, invalid: $v.employee.active.$invalid }"
+              v-model="$v.employee.active.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('rnApp.employee.createDate')" for="employee-createDate">Create Date</label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="employee-createDate"
+                  v-model="$v.employee.createDate.$model"
+                  name="createDate"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="employee-createDate"
+                data-cy="createDate"
+                type="text"
+                class="form-control"
+                name="createDate"
+                :class="{ valid: !$v.employee.createDate.$invalid, invalid: $v.employee.createDate.$invalid }"
+                v-model="$v.employee.createDate.$model"
+              />
+            </b-input-group>
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('rnApp.employee.department')" for="employee-department">Department</label>
             <select class="form-control" id="employee-department" data-cy="department" name="department" v-model="employee.department">
               <option v-bind:value="null"></option>

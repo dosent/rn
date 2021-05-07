@@ -20,6 +20,12 @@ const Employee = () => import('@/entities/employee/employee.vue');
 const EmployeeUpdate = () => import('@/entities/employee/employee-update.vue');
 // prettier-ignore
 const EmployeeDetails = () => import('@/entities/employee/employee-details.vue');
+// prettier-ignore
+const Groups = () => import('@/entities/groups/groups.vue');
+// prettier-ignore
+const GroupsUpdate = () => import('@/entities/groups/groups-update.vue');
+// prettier-ignore
+const GroupsDetails = () => import('@/entities/groups/groups-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -93,6 +99,30 @@ export default [
     path: '/employee/:employeeId/view',
     name: 'EmployeeView',
     component: EmployeeDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/groups',
+    name: 'Groups',
+    component: Groups,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/groups/new',
+    name: 'GroupsCreate',
+    component: GroupsUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/groups/:groupsId/edit',
+    name: 'GroupsEdit',
+    component: GroupsUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/groups/:groupsId/view',
+    name: 'GroupsView',
+    component: GroupsDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

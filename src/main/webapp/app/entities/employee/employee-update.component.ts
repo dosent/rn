@@ -9,6 +9,9 @@ import { IDepartment } from '@/shared/model/department.model';
 import RegionService from '@/entities/region/region.service';
 import { IRegion } from '@/shared/model/region.model';
 
+import GroupsService from '@/entities/groups/groups.service';
+import { IGroups } from '@/shared/model/groups.model';
+
 import { IEmployee, Employee } from '@/shared/model/employee.model';
 import EmployeeService from './employee.service';
 
@@ -20,6 +23,10 @@ const validations: any = {
     phoneNumber: {},
     hireDate: {},
     salary: {},
+    portalId: {},
+    login: {},
+    active: {},
+    createDate: {},
   },
 };
 
@@ -37,6 +44,10 @@ export default class EmployeeUpdate extends Vue {
   @Inject('regionService') private regionService: () => RegionService;
 
   public regions: IRegion[] = [];
+
+  @Inject('groupsService') private groupsService: () => GroupsService;
+
+  public groups: IGroups[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -140,6 +151,11 @@ export default class EmployeeUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.regions = res.data;
+      });
+    this.groupsService()
+      .retrieve()
+      .then(res => {
+        this.groups = res.data;
       });
   }
 }

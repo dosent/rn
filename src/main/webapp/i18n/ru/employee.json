@@ -24,8 +24,13 @@
       "phoneNumber": "Phone Number",
       "hireDate": "Hire Date",
       "salary": "Salary",
+      "portalId": "Portal Id",
+      "login": "Login",
+      "active": "Active",
+      "createDate": "Create Date",
       "department": "Department",
-      "region": "Region"
+      "region": "Region",
+      "groups": "Groups"
     }
   }
 }

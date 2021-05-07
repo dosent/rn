@@ -1,11 +1,11 @@
-id;first_name;last_name;email;phone_number;hire_date;salary
-1;Lola;Кабанова;Immanuel_40@gmail.com;modular Бетонный ул.;2021-05-07T05:55:54;51073
-2;Emmet;Киселев;Lucio75@yandex.ru;сотрудник;2021-05-07T08:30:02;27282
-3;Laisha;Гусев;Jaycee_59@yandex.ru;резервное;2021-05-06T20:46:57;48992
-4;Jaron;Королев;Garfield_82@yahoo.com;synergy Австрия;2021-05-06T19:39:56;80529
-5;Unique;Ильина;Ignatius.@mail.ru;розовый;2021-05-06T09:40:09;18581
-6;Myrtice;Галкина;Freeda_64@mail.ru;Decentralized;2021-05-06T19:35:33;95498
-7;Carol;Маслова;Chandler_65@ya.ru;улица infrastructures;2021-05-07T08:35:14;8893
-8;June;Чернова;Keith3@hotmail.com;Uruguayo;2021-05-06T22:17:30;16398
-9;Peter;Меркушева;Daisy_@ya.ru;Спорт Бетонный нейронный;2021-05-06T20:55:30;24828
-10;Hipolito;Жданова;Linnea90@yandex.ru;Эргономичный;2021-05-07T02:59:54;65131
+id;first_name;last_name;email;phone_number;hire_date;salary;portal_id;login;active;create_date
+1;Lola;Кабанова;Immanuel_40@gmail.com;modular Бетонный ул.;2021-05-07T05:55:54;51073;leading-edge;interfaces сжать;true;2021-05-07
+2;Adan;Игнатьев;Branson_71@ya.ru;Account Бакалея;2021-05-06T20:55:51;47489;сине-фиолетовый Автомобиль;индексирование Глобальный;false;2021-05-07
+3;Karen;Гущина;Brando13@gmail.com;музыка open-source;2021-05-07T04:13:45;73893;Кувейт time-frame;deposit Куртка логистический;false;2021-05-07
+4;Chandler;Ефимова;Jovanny.@hotmail.com;infrastructures музыка payment;2021-05-06T19:14:07;24520;Плащ;initiatives invoice белый;false;2021-05-06
+5;Raphael;Владимиров;Brent_4@ya.ru;Mandatory Бурятия;2021-05-06T18:25:34;9465;Глобальный;24/7;false;2021-05-07
+6;Abe;Воробьева;Lionel29@ya.ru;Personal интерфейс Деревянный;2021-05-06T23:09:23;32719;Мальдивы invoice De-engineered;Integrated payment;true;2021-05-07
+7;Derrick;Исаев;Kiara.@yandex.ru;Неодимовый UIC-Franc Kroon;2021-05-06T11:01:17;83775;Лоснящийся;bandwidth;true;2021-05-06
+8;Lucile;Зиновьев;Aiyana.14@yandex.ru;bottom-line передатчик;2021-05-07T00:13:43;42270;виртуальный 4th Районный;Центральный зеленый синий;false;2021-05-07
+9;Gerard;Маркова;Denis_99@gmail.com;продукт запрограммировать БИОС;2021-05-07T07:06:22;81488;Практичный;Стол;false;2021-05-06
+10;Berniece;Некрасов;Mariela_81@yahoo.com;Ведущий красный;2021-05-07T01:13:22;36802;внутренний;мобильный transition Bedfordshire;false;2021-05-06

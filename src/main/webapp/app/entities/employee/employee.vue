@@ -56,6 +56,22 @@
               <span v-text="$t('rnApp.employee.salary')">Salary</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'salary'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('portalId')">
+              <span v-text="$t('rnApp.employee.portalId')">Portal Id</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'portalId'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('login')">
+              <span v-text="$t('rnApp.employee.login')">Login</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'login'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('active')">
+              <span v-text="$t('rnApp.employee.active')">Active</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'active'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('createDate')">
+              <span v-text="$t('rnApp.employee.createDate')">Create Date</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('department.id')">
               <span v-text="$t('rnApp.employee.department')">Department</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'department.id'"></jhi-sort-indicator>
@@ -78,6 +94,10 @@
             <td>{{ employee.phoneNumber }}</td>
             <td>{{ employee.hireDate ? $d(Date.parse(employee.hireDate), 'short') : '' }}</td>
             <td>{{ employee.salary }}</td>
+            <td>{{ employee.portalId }}</td>
+            <td>{{ employee.login }}</td>
+            <td>{{ employee.active }}</td>
+            <td>{{ employee.createDate }}</td>
             <td>
               <div v-if="employee.department">
                 <router-link :to="{ name: 'DepartmentView', params: { departmentId: employee.department.id } }">{{

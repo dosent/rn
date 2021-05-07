@@ -1,8 +1,12 @@
 package com.simbirsoft.rn.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -38,6 +42,18 @@ public class Employee implements Serializable {
     @Column(name = "salary")
     private Long salary;
 
+    @Column(name = "portal_id")
+    private String portalId;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "active")
+    private Boolean active;
+
+    @Column(name = "create_date")
+    private LocalDate createDate;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Department department;
@@ -45,6 +61,10 @@ public class Employee implements Serializable {
     @OneToOne
     @JoinColumn(unique = true)
     private Region region;
+
+    @ManyToMany(mappedBy = "employees")
+    @JsonIgnoreProperties(value = { "employees" }, allowSetters = true)
+    private Set<Groups> groups = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -138,6 +158,58 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
 
+    public String getPortalId() {
+        return this.portalId;
+    }
+
+    public Employee portalId(String portalId) {
+        this.portalId = portalId;
+        return this;
+    }
+
+    public void setPortalId(String portalId) {
+        this.portalId = portalId;
+    }
+
+    public String getLogin() {
+        return this.login;
+    }
+
+    public Employee login(String login) {
+        this.login = login;
+        return this;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public Employee active(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public LocalDate getCreateDate() {
+        return this.createDate;
+    }
+
+    public Employee createDate(LocalDate createDate) {
+        this.createDate = createDate;
+        return this;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
+
     public Department getDepartment() {
         return this.department;
     }
@@ -162,6 +234,37 @@ public class Employee implements Serializable {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public Set<Groups> getGroups() {
+        return this.groups;
+    }
+
+    public Employee groups(Set<Groups> groups) {
+        this.setGroups(groups);
+        return this;
+    }
+
+    public Employee addGroups(Groups groups) {
+        this.groups.add(groups);
+        groups.getEmployees().add(this);
+        return this;
+    }
+
+    public Employee removeGroups(Groups groups) {
+        this.groups.remove(groups);
+        groups.getEmployees().remove(this);
+        return this;
+    }
+
+    public void setGroups(Set<Groups> groups) {
+        if (this.groups != null) {
+            this.groups.forEach(i -> i.removeEmployee(this));
+        }
+        if (groups != null) {
+            groups.forEach(i -> i.addEmployee(this));
+        }
+        this.groups = groups;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -194,6 +297,10 @@ public class Employee implements Serializable {
             ", phoneNumber='" + getPhoneNumber() + "'" +
             ", hireDate='" + getHireDate() + "'" +
             ", salary=" + getSalary() +
+            ", portalId='" + getPortalId() + "'" +
+            ", login='" + getLogin() + "'" +
+            ", active='" + getActive() + "'" +
+            ", createDate='" + getCreateDate() + "'" +
             "}";
     }
 }

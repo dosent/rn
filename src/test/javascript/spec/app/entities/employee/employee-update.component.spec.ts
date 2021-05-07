@@ -15,6 +15,8 @@ import DepartmentService from '@/entities/department/department.service';
 
 import RegionService from '@/entities/region/region.service';
 
+import GroupsService from '@/entities/groups/groups.service';
+
 const localVue = createLocalVue();
 
 config.initVueApp(localVue);
@@ -48,6 +50,8 @@ describe('Component Tests', () => {
           departmentService: () => new DepartmentService(),
 
           regionService: () => new RegionService(),
+
+          groupsService: () => new GroupsService(),
         },
       });
       comp = wrapper.vm;
